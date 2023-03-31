@@ -6,13 +6,13 @@ provider "helm" {
 }
 
 resource "helm_release" "virtual_cluster" {
-  name       = "my-vcluster"
-  namespace   = "vcluster-demo"
-  create_namespace   = true
-  repository = "https://charts.loft.sh"
-  chart      = "vcluster"
+  name             = "my-vcluster"
+  namespace        = "vcluster-demo"
+  create_namespace = true
+  repository       = "https://charts.loft.sh"
+  chart            = "vcluster"
 
-# Greate for local clusters
+  # Greate for local clusters
   set {
     name  = "service.type"
     value = "NodePort"

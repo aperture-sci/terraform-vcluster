@@ -1,17 +1,15 @@
 provider "kubernetes" {
-  config_path    = "~/.kube/config"
-#   config_context = "my-context"
+  config_path = "~/.kube/config"
+  #   config_context = "my-context"
 }
 
 data "kubernetes_secret" "vcluster_kubeconfig" {
   metadata {
-    name      = "vc-my-vcluster"
-    namespace = "vcluster-demo"
+    name      = "vc-${helm_release.virtual_cluster.name}"
+    namespace = helm_release.virtual_cluster.namespace
   }
 
-  depends_on = [
-    helm_release.virtual_cluster
-  ]
+
 }
 
 # output "kube_config_client_authority" {
@@ -31,8 +29,8 @@ data "kubernetes_secret" "vcluster_kubeconfig" {
 
 output "kube_config" {
   description = "The Kubeconfig file of the virtual cluster"
-  value = data.kubernetes_secret.vcluster_kubeconfig.data.config
-  sensitive = true
+  value       = data.kubernetes_secret.vcluster_kubeconfig.data.config
+  sensitive   = true
 
 
 
