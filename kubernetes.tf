@@ -8,7 +8,7 @@ data "kubernetes_resource" "vcluster_kubeconfig" {
   kind        = "Secret"
 
   metadata {
-    name      = "vc-demo"
+    name      = "vc-my-vcluster"
     namespace = "vcluster-demo"
   }
 }
