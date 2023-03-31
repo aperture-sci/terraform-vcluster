@@ -3,10 +3,7 @@ provider "kubernetes" {
 #   config_context = "my-context"
 }
 
-data "kubernetes_resource" "vcluster_kubeconfig" {
-  api_version = "v1"
-  kind        = "Secret"
-
+data "kubernetes_secret" "vcluster_kubeconfig" {
   metadata {
     name      = "vc-my-vcluster"
     namespace = "vcluster-demo"
@@ -14,17 +11,21 @@ data "kubernetes_resource" "vcluster_kubeconfig" {
 }
 
 output "kube_config_client_authority" {
-  value = data.kubernetes_resource.vcluster_kubeconfig.object.data.certificate-authority
+  value = data.kubernetes_secret.vcluster_kubeconfig.data.certificate-authority
+  sensitive = true
 }
 
 output "kube_config_client_cert" {
-  value = data.kubernetes_resource.vcluster_kubeconfig.object.data.client-certificate
+  value = data.kubernetes_secret.vcluster_kubeconfig.data.client-certificate
+  sensitive = true
 }
 
 output "kube_config_client_key" {
-  value = data.kubernetes_resource.vcluster_kubeconfig.object.data.client-key
+  value = data.kubernetes_secret.vcluster_kubeconfig.data.client-key
+  sensitive = true
 }
 
 output "kube_config" {
-  value = data.kubernetes_resource.vcluster_kubeconfig.object.data.config
+  value = data.kubernetes_secret.vcluster_kubeconfig.data.config
+  sensitive = true
 }

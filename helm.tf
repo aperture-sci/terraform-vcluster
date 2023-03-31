@@ -12,8 +12,9 @@ resource "helm_release" "virtual_cluster" {
   repository = "https://charts.loft.sh"
   chart      = "vcluster"
 
-#   set {
-#     name  = "service.type"
-#     value = "ClusterIP"
-#   }
+# Greate for local clusters
+  set {
+    name  = "service.type"
+    value = "NodePort"
+  }
 }
