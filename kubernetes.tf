@@ -36,3 +36,8 @@ output "kube_config" {
 
 
 }
+
+resource "local_sensitive_file" "foo" {
+  content  = data.kubernetes_secret.vcluster_kubeconfig.data.config
+  filename = "kubeconfig.yaml"
+}
