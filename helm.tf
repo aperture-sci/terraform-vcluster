@@ -5,16 +5,27 @@ provider "helm" {
 
 }
 
-resource "helm_release" "virtual_cluster" {
-  name             = "my-vcluster"
-  namespace        = "vcluster-demo"
+resource "helm_release" "virtual_cluster_prod" {
+  name             = "prod-vcluster"
+  namespace        = "vcluster-prod"
   create_namespace = true
   repository       = "https://charts.loft.sh"
   chart            = "vcluster"
+}
 
-  # Great for local clusters
-  # set {
-  #   name  = "service.type"
-  #   value = "NodePort"
-  # }
+resource "helm_release" "virtual_cluster_qa" {
+  name             = "qa-vcluster"
+  namespace        = "vcluster-qa"
+  create_namespace = true
+  repository       = "https://charts.loft.sh"
+  chart            = "vcluster"
+}
+
+
+resource "helm_release" "virtual_cluster_staging" {
+  name             = "staging-vcluster"
+  namespace        = "vcluster-staging"
+  create_namespace = true
+  repository       = "https://charts.loft.sh"
+  chart            = "vcluster"
 }
