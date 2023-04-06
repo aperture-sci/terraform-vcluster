@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+ name: dashboard-ing
+ namespace: ingress-dashboard
+ annotations:
+   cert-manager.io/issuer: "le-example-http"
+spec:
+ tls:
+   - hosts:
+       - kubecon.sales-dev.codefresh.io
+     secretName: tls-dashboard-ingress-http
+ rules:
+   - host: kubecon.sales-dev.codefresh.io
+     http:
+       paths:
+         - path: /
+           pathType: Prefix
+           backend:
+             service:
+               name: dashboard
+               port:
+                 name: http
