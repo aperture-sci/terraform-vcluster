@@ -11,7 +11,7 @@ resource "helm_release" "virtual_cluster_prod" {
   create_namespace = true
   repository       = "https://charts.loft.sh"
   chart            = "vcluster"
-  version          = "0.13.0"
+  version          = "0.11.2"
 }
 
 resource "helm_release" "virtual_cluster_qa" {
@@ -20,7 +20,7 @@ resource "helm_release" "virtual_cluster_qa" {
   create_namespace = true
   repository       = "https://charts.loft.sh"
   chart            = "vcluster"
-  version          = "0.13.0"
+  version          = "0.11.2"
 }
 
 
@@ -30,5 +30,5 @@ resource "helm_release" "virtual_cluster_staging" {
   create_namespace = true
   repository       = "https://charts.loft.sh"
   chart            = "vcluster"
-  version          = "0.13.0"
+  version          = "0.11.2"
 }
