@@ -12,7 +12,7 @@ steps:
   clone:
     title: "Cloning repository"
     type: "git-clone"
-    repo: "aperture-fresh/terraform-vcluster"
+    repo: "aperture-sci/terraform-vcluster"
     # CF_BRANCH value is auto set when pipeline is triggered
     # Learn more at codefresh.io/docs/docs/codefresh-yaml/variables/
     revision: "${{CF_BRANCH}}"
