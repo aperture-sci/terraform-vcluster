@@ -41,17 +41,17 @@ data "kubernetes_secret" "vcluster_kubeconfig_staging" {
 
 
 
-resource "local_sensitive_file" "prod_kube_config_file" {
-  content  = data.kubernetes_secret.vcluster_kubeconfig_prod.data.config
-  filename = "kubeconfig_prod.yaml"
-}
+# resource "local_sensitive_file" "prod_kube_config_file" {
+#   content  = data.kubernetes_secret.vcluster_kubeconfig_prod.data.config
+#   filename = "kubeconfig_prod.yaml"
+# }
 
-resource "local_sensitive_file" "qa_kube_config_file" {
-  content  = data.kubernetes_secret.vcluster_kubeconfig_qa.data.config
-  filename = "kubeconfig_qa.yaml"
-}
+# resource "local_sensitive_file" "qa_kube_config_file" {
+#   content  = data.kubernetes_secret.vcluster_kubeconfig_qa.data.config
+#   filename = "kubeconfig_qa.yaml"
+# }
 
-resource "local_sensitive_file" "staging_kube_config_file" {
-  content  = data.kubernetes_secret.vcluster_kubeconfig_staging.data.config
-  filename = "kubeconfig_staging.yaml"
-}
+# resource "local_sensitive_file" "staging_kube_config_file" {
+#   content  = data.kubernetes_secret.vcluster_kubeconfig_staging.data.config
+#   filename = "kubeconfig_staging.yaml"
+# }
