@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+  name: target-vcluster-qa-ingress
+  namespace: target-vcluster-qa
+spec:
+  ingressClassName: nginx 
+  rules:
+  - host: qa.kubecon.sales-dev.codefresh.io
+    http:
+      paths:
+      - backend:
+          service:
+            name: target-vcluster-qa
+            port: 
+              number: 443
+        path: /
+        pathType: ImplementationSpecific
