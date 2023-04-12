@@ -28,6 +28,7 @@ resource "helm_release" "virtual_cluster_staging" {
   name             = "staging-vcluster"
   namespace        = "vcluster-staging"
   create_namespace = true
+  expose           = true
   repository       = "https://charts.loft.sh"
   chart            = "vcluster"
   version          = "0.11.2"
