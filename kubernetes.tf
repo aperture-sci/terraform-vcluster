@@ -1,7 +1,4 @@
-provider "kubernetes" {
-  config_path = "~/.kube/config"
-  #   config_context = "my-context"
-}
+
 
 data "kubernetes_secret" "vcluster_kubeconfig_prod" {
   metadata {

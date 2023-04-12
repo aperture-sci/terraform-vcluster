@@ -43,3 +43,12 @@ resource "helm_release" "target_vcluster_prod" {
 #   chart            = "vcluster"
 #   version          = "0.11.2"
 # }
+
+
+resource "kubernetes_manifest" "service" {
+  depends_on = [
+    helm_release.target_vcluster_prod
+  ]
+
+  manifest = yamldecode(file("manifests/ingresses/vcluster-prod-ing.yml"))
+}
