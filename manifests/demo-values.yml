@@ -1,3 +1,0 @@
-syncer:
-  extraArgs:
-  - --tls-san=demo.kubecon.sales-dev.codefresh.io
