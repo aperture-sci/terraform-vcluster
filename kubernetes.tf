@@ -1,25 +1,25 @@
 
 
-data "kubernetes_secret" "vcluster_kubeconfig_prod" {
-  metadata {
-    name      = "vc-${helm_release.virtual_cluster_prod.name}"
-    namespace = helm_release.virtual_cluster_prod.namespace
-  }
-}
+# data "kubernetes_secret" "vcluster_kubeconfig_prod" {
+#   metadata {
+#     name      = "vc-${helm_release.virtual_cluster_prod.name}"
+#     namespace = helm_release.virtual_cluster_prod.namespace
+#   }
+# }
 
-data "kubernetes_secret" "vcluster_kubeconfig_qa" {
-  metadata {
-    name      = "vc-${helm_release.virtual_cluster_qa.name}"
-    namespace = helm_release.virtual_cluster_qa.namespace
-  }
-}
+# data "kubernetes_secret" "vcluster_kubeconfig_qa" {
+#   metadata {
+#     name      = "vc-${helm_release.virtual_cluster_qa.name}"
+#     namespace = helm_release.virtual_cluster_qa.namespace
+#   }
+# }
 
-data "kubernetes_secret" "vcluster_kubeconfig_staging" {
-  metadata {
-    name      = "vc-${helm_release.virtual_cluster_staging.name}"
-    namespace = helm_release.virtual_cluster_staging.namespace
-  }
-}
+# data "kubernetes_secret" "vcluster_kubeconfig_staging" {
+#   metadata {
+#     name      = "vc-${helm_release.virtual_cluster_staging.name}"
+#     namespace = helm_release.virtual_cluster_staging.namespace
+#   }
+# }
 
 # output "kube_config_client_authority" {
 #   value = data.kubernetes_secret.vcluster_kubeconfig.data.certificate-authority
