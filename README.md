@@ -22,24 +22,24 @@ These are `prod-vcluster`,`qa-vcluster`,`staging-vcluster`
 
 These clusters:
 
-* connected one GitOps runtime each
+* contain one GitOps runtime each
 * are NOT externally accessible 
 * can be used for deploying applications and running Argo Workflows
 
 
 ## Accessing and debugging the virtual clusters
 
-Download to your workstation the [aws cli](https://aws.amazon.com/cli/) and the [vcluster cli](https://www.vcluster.com/docs/getting-started/setup)
+Download to your workstation the [aws cli](https://aws.amazon.com/cli/) and the [vcluster cli](https://www.vcluster.com/docs/getting-started/setup).
 
 Get your AWS credential from the AWS SSO application in your Codefresh account
 
-The in a terminal execute
+Then in a terminal execute:
 
 ```shell
 aws eks --region us-east-1 update-kubeconfig --name kubecon-dev
 ```
 
-You now have access to the parent/real cluster that contains all the virtual clusters
+You now have access to the parent/real cluster that contains all the virtual clusters.
 
 To access individual clusters from group A
 
@@ -51,11 +51,9 @@ vcluster connect target-vcluster-qa -n target-vcluster-qa  --server=https://qa.k
 vcluster connect target-vcluster-staging -n target-vcluster-staging  --server=https://staging.kubecon.sales-dev.codefresh.io
 ```
 
-Note that each command will permanently change your local kubeconfig file to that of the virtual cluster. Use the command `vcluster disconnect` to change your kubecontext back to the parent/real cluster
+Note that each command will permanently change your local kubeconfig file to that of the virtual cluster. Use the command `vcluster disconnect` to change your kubecontext back to the parent/real cluster.
 
-To access individual clusters from group B
-
-Execute
+To access individual clusters from group B, execute:
 
 ```shell
 vcluster connect qa-vcluster -n vcluster-qa
@@ -63,11 +61,11 @@ vcluster connect prod-vcluster -n vcluster-prod
 vcluster connect stagin-vcluster -n vcluster-staging
 ```
 
-Note that each command will start a port forward process. You need then to open another terminal to use `kubectl` commands to access the cluster. Press Ctrl-C to  change your kubecontext back to the parent/real cluster
+Note that each command will start a port forward process. You need then to open another terminal to use `kubectl` commands to access the cluster. Press Ctrl-C to  change your kubecontext back to the parent/real cluster.
 
 ## Recreating the clusters
 
-To destroy all the clusters then install [the terraform CL](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
+To destroy all the clusters first install [the terraform CLI](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
 and run 
 
 ```shell
@@ -78,7 +76,7 @@ terraform destroy
 
 Before doing that you might want to disconnect the deployment clusters from Codefresh first and uninstall also the GitOps runtimes.
 
-Notice that we use the Cluster itself for holding the terraform state
+
 If you want to create the clusters again
 
 ```
@@ -87,5 +85,7 @@ terraform apply
 ```
 
 Answer yes to the question.
+
+Notice that in both cases we use the parent/real cluster for holding the terraform state, so you need to have run the aws cli command first.
 
 
