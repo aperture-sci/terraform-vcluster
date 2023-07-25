@@ -1,6 +1,6 @@
 resource "helm_release" "virtual_cluster_prod" {
   name             = "prod-vcluster"
-  namespace        = "vcluster-prod"
+  namespace        = "prod-vcluster"
   create_namespace = true
   repository       = "https://charts.loft.sh"
   chart            = "vcluster-k8s"
