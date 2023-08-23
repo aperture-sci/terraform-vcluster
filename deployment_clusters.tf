@@ -73,3 +73,24 @@ resource "kubernetes_manifest" "qa_ingress" {
   ]
   manifest = yamldecode(file("manifests/ingresses/vcluster-qa-ing.yml"))
 }
+
+# Create Cluster for Crossplane
+resource "helm_release" "target_vcluster_crossplane" {
+  name             = "target-vcluster-crossplane"
+  namespace        = "target-vcluster-crossplane"
+  create_namespace = true
+  repository       = "https://charts.loft.sh"
+  chart            = "vcluster"
+  version          = "0.11.2"
+
+  values = [
+    file("${path.module}/manifests/deployment_clusters/vcluster-crossplane-values.yml")
+  ]
+}
+
+resource "kubernetes_manifest" "crossplane_ingress" {
+  depends_on = [
+    helm_release.target_vcluster_crossplane
+  ]
+  manifest = yamldecode(file("manifests/ingresses/vcluster-crossplane-ing.yml"))
+}
