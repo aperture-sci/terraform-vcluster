@@ -1,0 +1,8 @@
+syncer:
+  extraArgs:
+  - --tls-san=asia.kubecon.sales-dev.codefresh.io
+fallbackHostDns: true
+ingress:
+  enabled: true
+  host: asia.port.sales-dev.codefresh.io
+  ingressClassName: nginx  
