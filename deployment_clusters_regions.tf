@@ -53,4 +53,31 @@ resource "helm_release" "target_vcluster_use" {
   ]
 }
 
+resource "kubernetes_manifest" "asia_ingress" {
+  depends_on = [
+    helm_release.target_vcluster_asia
+  ]
+  manifest = yamldecode(file("manifests/ingresses_regions/vcluster-asia-ing.yml"))
+}
+
+resource "kubernetes_manifest" "eu_ingress" {
+  depends_on = [
+    helm_release.target_vcluster_eu
+  ]
+  manifest = yamldecode(file("manifests/ingresses_regions/vcluster-eu-ing.yml"))
+}
+
+resource "kubernetes_manifest" "usw_ingress" {
+  depends_on = [
+    helm_release.target_vcluster_usw
+  ]
+  manifest = yamldecode(file("manifests/ingresses_regions/vcluster-usw-ing.yml"))
+}
+
+resource "kubernetes_manifest" "use_ingress" {
+  depends_on = [
+    helm_release.target_vcluster_use
+  ]
+  manifest = yamldecode(file("manifests/ingresses_regions/vcluster-use-ing.yml"))
+}
 
