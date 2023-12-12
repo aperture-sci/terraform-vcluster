@@ -4,5 +4,5 @@ syncer:
 fallbackHostDns: true
 ingress:
   enabled: true
-  host: eu.port.sales-dev.codefresh.io
+  host: eu.kubecon.sales-dev.codefresh.io
   ingressClassName: nginx  
