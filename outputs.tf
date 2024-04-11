@@ -10,6 +10,12 @@
 #   sensitive   = true
 # }
 
+# output "kube_config_dev" {
+#   description = "The Kubeconfig file of the DEV virtual cluster"
+#   value       = data.kubernetes_secret.vcluster_kubeconfig_dev.data.config
+#   sensitive   = true
+# }
+
 # output "kube_config_staging" {
 #   description = "The Kubeconfig file of the Staging virtual cluster"
 #   value       = data.kubernetes_secret.vcluster_kubeconfig_staging.data.config
