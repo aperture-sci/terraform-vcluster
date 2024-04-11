@@ -14,6 +14,13 @@
 #   }
 # }
 
+# data "kubernetes_secret" "vcluster_kubeconfig_dev" {
+#   metadata {
+#     name      = "vc-${helm_release.virtual_cluster_dev.name}"
+#     namespace = helm_release.virtual_cluster_dev.namespace
+#   }
+# }
+
 # data "kubernetes_secret" "vcluster_kubeconfig_staging" {
 #   metadata {
 #     name      = "vc-${helm_release.virtual_cluster_staging.name}"
@@ -46,6 +53,11 @@
 # resource "local_sensitive_file" "qa_kube_config_file" {
 #   content  = data.kubernetes_secret.vcluster_kubeconfig_qa.data.config
 #   filename = "kubeconfig_qa.yaml"
+# }
+
+# resource "local_sensitive_file" "dev_kube_config_file" {
+#   content  = data.kubernetes_secret.vcluster_kubeconfig_dev.data.config
+#   filename = "kubeconfig_dev.yaml"
 # }
 
 # resource "local_sensitive_file" "staging_kube_config_file" {
