@@ -49,6 +49,7 @@ Execute
 vcluster connect target-vcluster-prod -n target-vcluster-prod  --server=https://prod.kubecon.sales-dev.codefresh.io
 vcluster connect target-vcluster-qa -n target-vcluster-qa  --server=https://qa.kubecon.sales-dev.codefresh.io
 vcluster connect target-vcluster-staging -n target-vcluster-staging  --server=https://staging.kubecon.sales-dev.codefresh.io
+vcluster connect target-vcluster-dev -n target-vcluster-dev  --server=https://dev.kubecon.sales-dev.codefresh.io
 ```
 
 Note that each command will permanently change your local kubeconfig file to that of the virtual cluster. Use the command `vcluster disconnect` to change your kubecontext back to the parent/real cluster.
@@ -58,7 +59,8 @@ To access individual clusters from group B, execute:
 ```shell
 vcluster connect qa-vcluster -n vcluster-qa
 vcluster connect prod-vcluster -n vcluster-prod
-vcluster connect stagin-vcluster -n vcluster-staging
+vcluster connect staging-vcluster -n vcluster-staging
+vcluster connect dev-vcluster -n vcluster-dev
 ```
 
 Note that each command will start a port forward process. You need then to open another terminal to use `kubectl` commands to access the cluster. Press Ctrl-C to  change your kubecontext back to the parent/real cluster.
