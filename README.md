@@ -8,11 +8,11 @@ The clusters are split into 2 groups
 
 ## Group A - Virtual clusters connected to the SAAS hosted runtime
 
-These are `kc-v-prod`,`kc-v-qa`,`kc-v-staging`
+These are `kc-v-prod`,`kc-v-qa`,`kc-v-staging`, `kc-v-dev`
 
 These clusters are
 
-* connected as managed clusters to `codefresh-hosted` runtime
+* connected as managed clusters to `gitops` runtime
 * are externally accessible the full DNS names
 * can only be used for deploying applications
 
